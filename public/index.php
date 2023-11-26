@@ -2,8 +2,9 @@
 require '../src/class/otherClass/Autoloder.php';
 Autoloader::register();
 $pages = [
-'home'=> '../src/view/home/home.php',
-'serveur'=>'../src/view/serveur/serveur.php',
+'home'=> '../src/view/serveur/serveurHome.php',
+'serveur'=>'../src/view/serveur/serveurHome.php',
+'homeMission' =>'../src/view/mission/homeMission.php',
 'error' => '../src/view/error/'
 ];
 
