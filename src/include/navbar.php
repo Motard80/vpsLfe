@@ -9,25 +9,8 @@
           <a class="nav-link active" aria-current="page" href="?p=home">Accueil</a>
         </li>
         <li class="nav-item">
-            <li> <a class="nav-link" href="?p=diplayidentity">Identité</a></li>
-            <li> <a class="nav-link" href="?p=diploma">Diplomes</a></li>
-            <li> <a class="nav-link" href="?p=domain">Domaine de compétences</a></li>
-            <li> <a class="nav-link" href="?p=hobbies">Loisirs</a></li>
-            <li> <a class="nav-link" href="?p=cPTProf">Experiences professionnelles</a></li>
-            <li> <a class="nav-link" href="?p=skills">Compétences professionnelles</a></li>
-            <li> <a class="nav-link" href="?p=trainning">Formations</a></li>
-            <li> <a class="nav-link" href="?p=subDomain">Sous domaines</a></li>
-            <li> <a class="nav-link" href="?p=logout">Déconnexion</a></li>
-       <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-          </ul>
-        </li>-->
+        <li> <a class="nav-link" href="?p=serveur">Gestion du serveur</a></li>
+        <li> <a class="nav-link" href="?p=missions">Gérer vos missions</a></li>
       </ul>
     </div>
   </div>

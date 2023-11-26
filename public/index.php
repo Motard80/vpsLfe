@@ -3,6 +3,7 @@ require '../src/class/otherClass/Autoloder.php';
 Autoloader::register();
 $pages = [
 'home'=> '../src/view/home/home.php',
+'serveur'=>'../src/view/serveur/serveur.php',
 'error' => '../src/view/error/'
 ];
 
