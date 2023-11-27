@@ -1,6 +1,6 @@
 <?php
 
-class Autoloader {
+/* class Autoloader {
     static function register() {
         spl_autoload_register(array(__CLASS__, 'autoload'));
     }
@@ -26,4 +26,27 @@ class Autoloader {
             echo "Le fichier de classe '$class_name' est introuvable à '$file_path'.";
         }
     }
+} */class Autoloader {
+    static function register() {
+        spl_autoload_register(array(__CLASS__, 'autoload'));
+    }
+
+    static function autoload($class_name) {
+        // Chemin de base où se trouvent les classes
+        $base_path = 'src/class/';
+
+        $class_name = str_replace("\\", "/", $class_name);
+
+        // Transformer le nom de la classe en chemin de fichier
+        $file_path = $base_path . $class_name . '.php';
+
+        // Vérifier si le fichier existe avant de le charger
+        if (file_exists($file_path)) {
+            require $file_path;
+        } else {
+            // Gérer l'erreur ou afficher un message
+            echo "Le fichier de classe '$class_name' est introuvable à '$file_path'.";
+        }
+    }
 }
+

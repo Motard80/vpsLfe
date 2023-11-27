@@ -1,5 +1,5 @@
 <?php
-namespace src\class\powerShell;
+namespace src\class\model\powerShell;
 
 use COM;
 
