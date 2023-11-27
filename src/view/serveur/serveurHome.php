@@ -6,6 +6,7 @@ use src\class\otherClass\Form;
 $powerShellExecutor = new PowerShellExecutor();
 include_once '../src/controleur/serveur/serveurHomeCtrl.php';
 $form= new Form();
+$error;
 ?>
 <title><?= isset($title) ? $title : '' ?></title>
 </head>
@@ -42,6 +43,11 @@ $form= new Form();
         </div>
         </div>
         </form>
+        <div id="messageServeurOk" class="row justify-content-center">
+            <?= $message ?>
+        </div>
+        <div id="messageServeurNoOk" class="row justify-content-center">
+        </div>
     </div>
     <div class="img">
         <img src="asset/img/Patch_Sable_France_HQ.png" alt="logoLfe">

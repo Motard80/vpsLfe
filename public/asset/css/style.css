@@ -9,3 +9,9 @@ img{
 nav{
     text-align: center;
 }
+#messageServeurOk{
+    color: chartreuse;
+}
+#messageServeurNoOk{
+    color: red;
+}
