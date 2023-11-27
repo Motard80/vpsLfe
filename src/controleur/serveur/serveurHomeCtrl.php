@@ -9,29 +9,41 @@ use src\class\model\powerShell\Stop;
 
 $powerShellExecutor = new PowerShellExecutor();
 
+$messge = array();
+$error = array();
+// Chargez le contenu du fichier JSON
+$cheminFichierJSON = '../src/config/profil_config.json';
+$profil = [];
 
+if (file_exists($cheminFichierJSON)) {
+    $jsonContent = file_get_contents($cheminFichierJSON);
+    $profil = json_decode($jsonContent, true);
+}
 $title='gestion du serveur';
 if(isset($_POST['start'])){
-    if($_POST['profil']==0){
+    if(!empty($_POST['profil'])){
         Start::startServeur();
-        $message='Serveur lancé avec le profils'. $_POST['profil'];
+        $message['start']='Serveur lancé avec le profils  '. $_POST['profil'];
     }else{
-        $error='Sélectionner un profils';
+        $error['start']='Sélectionner un profils';
     }
 
 }
 if(isset($_POST['reStart'])){
-    if($_POST['profil']==0){
+    if(!empty($_POST['profil'])){
         Restart::restart();
-        $message='Serveur redémarer';
+        $message['reStart']='Serveur redémarer';
     }else{
-        $error='';
+        $error['reStart']='selectionner un profil';
     }
 }
 
 if(isset($_POST['stop'])){
     Stop::stopServeur();
     
-    $message='Serveur arreter';
+    $message['stop']='Serveur arreter';
     
+}else{
+    $error['stop']='Le serveur ne s\'est pas arreter correctement';
 }
+

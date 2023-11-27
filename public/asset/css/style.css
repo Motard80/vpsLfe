@@ -9,12 +9,7 @@ img{
 nav{
     text-align: center;
 }
-#messageServeurOk{
-    color: chartreuse;
-}
-#messageServeurNoOk{
-    color: red;
-}
+
 #norton-idsafe-field-logo-imgId{
     
     width: 5px;
