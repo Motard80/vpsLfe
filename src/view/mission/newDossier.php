@@ -26,7 +26,9 @@ $form= new Form();
                     <?= $form->submit('Valider','create', 'create') ?>
                 </form>
             </div>
-  
+    <div>
+        <p><?= $result ?></p>
+    </div>
         </div>
     </div>
     <div class="img">
