@@ -1,41 +1,19 @@
 <?php
 namespace src\class\model\powerShell;
-
-use COM;
+use \COM;
 
 class PowerShellExecutor {
-    private $shell;
-
-    public function __construct() {
-        // Créer une instance du shell PowerShell
-        $this->shell = new COM("WScript.Shell");
-    }
-
     public function executeScript($scriptPath) {
+        // Échappez le chemin du script pour éviter les problèmes avec les espaces et les caractères spéciaux
+        $escapedScriptPath = escapeshellarg($scriptPath);
+
         // Construire la commande PowerShell
-        $command = "powershell.exe -ExecutionPolicy Bypass -File $scriptPath";
+        $command = "powershell.exe -ExecutionPolicy Bypass -File $escapedScriptPath";
 
-        // Exécuter la commande
-        $this->shell->Run($command, 0, false);
-    }
+        // Exécuter la commande et récupérer la sortie
+        $output = shell_exec($command);
 
-    /**
-     * Get the value of shell
-     */ 
-    public function getShell()
-    {
-        return $this->shell;
-    }
-
-    /**
-     * Set the value of shell
-     *
-     * @return  self
-     */ 
-    public function setShell($shell)
-    {
-        $this->shell = $shell;
-
-        return $this;
+        // Afficher la sortie (pour le débogage, vous pouvez ajuster cela selon vos besoins)
+        echo $output;
     }
 }

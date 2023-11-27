@@ -1,7 +1,9 @@
 <?php
 
+use src\class\model\powerShell\PowerShellExecutor;
 use src\class\otherClass\Form;
 
+$powerShellExecutor = new PowerShellExecutor();
 include_once '../src/controleur/serveur/serveurHomeCtrl.php';
 $form= new Form();
 ?>
