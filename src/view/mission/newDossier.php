@@ -3,7 +3,7 @@
 use src\class\otherClass\Form;
 
 include_once '../src/controleur/mission/newDossierCtrl.php';
-
+$result;
 $form= new Form();
 ?>
 <title><?= isset($title) ? $title : '' ?></title>

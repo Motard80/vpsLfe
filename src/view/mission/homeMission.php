@@ -22,12 +22,6 @@ $form= new Form();
                 <p>vous n'avez pas encore de dossier à votre nom <a href="?p=newDossier">cliquez ici</a></p>
             </div>
             <div>
-                <form action="" method="post">
-                    <?= $form->inputText('name','name', 'Nom du joueur' ) ?>
-                    <?= $form->submit('Valider','create', 'create') ?>
-                </form>
-            </div>
-            <div>
                 <div class="profil">
                     <select name="profil" id="profil">
                         <option value="">mission</option>
