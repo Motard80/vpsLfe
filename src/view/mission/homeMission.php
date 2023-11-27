@@ -23,13 +23,12 @@ $form= new Form();
             </div>
             <div>
                 <div class="profil">
-                   <?= $form->submit('Editér votre fichier config','udapteConfig', 'udapteConfig') ?>      
+                  <a href="?p=udapteConfig"><button>editer le fichier config.cfg</button></a>     
             </div>
             </div>
         </div>
         <div class="row justify-content-start">
-            <div class="col-4">
-                
+            <div class="col-4">                
             <div class="mission">
                     <select name="mission" id="mission">
                         <option value="">mission</option>

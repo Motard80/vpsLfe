@@ -6,6 +6,7 @@ $pages = [
 'serveur'=>'../src/view/serveur/serveurHome.php',
 'missions' =>'../src/view/mission/homeMission.php',
 'newDossier'=>'../src/view/mission/newDossier.php',
+'udapteConfig'=>'../src/view/mission/udapteConfig.php',
 'error' => '../src/view/error/'
 ];
 

@@ -1,7 +1,7 @@
 <?php
-namespace src\class\model\ServerConfigEditor ;
+namespace src\class\model\EditeurConfigServeur;
 
-class ServerConfigEditor {
+class EditeurConfigServeur  {
     private $configFilePath;
 
     public function __construct($configFilePath) {
