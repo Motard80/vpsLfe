@@ -55,7 +55,7 @@ class Form
      * @param $msgLabel string nom passer dans le label 
      * @return string
      */
-    public function inputText( $error, $name, $id, $msgLabel){
+    public function inputText( $name, $id, $msgLabel){
 
        return $this->surrond( '<label for="'.$id.'">'.$msgLabel.' :  </label>'
        . '<input type="text" id="'.$id.'" value="'.$this->getValue($name).'" name="'.$name.'" required>'

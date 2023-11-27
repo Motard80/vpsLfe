@@ -1,5 +1,10 @@
 <?php
+
+use src\class\otherClass\Form;
+
 include_once '../src/controleur/mission/homeMissionCtrl.php';
+
+$form= new Form();
 ?>
 <title><?= isset($title) ? $title : '' ?></title>
 </head>
@@ -12,6 +17,15 @@ include_once '../src/controleur/mission/homeMissionCtrl.php';
         <div class="row justify-content-center">
             <div class="col-lg-4">
                 <h1>Gestion des missions</h1>
+            </div>
+            <div>
+                <p>vous n'avez pas encore de dossier à votre nom <a href="?p=newDossier">cliquez ici</a></p>
+            </div>
+            <div>
+                <form action="" method="post">
+                    <?= $form->inputText('name','name', 'Nom du joueur' ) ?>
+                    <?= $form->submit('Valider','create', 'create') ?>
+                </form>
             </div>
             <div>
                 <div class="profil">

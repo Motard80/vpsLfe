@@ -4,7 +4,8 @@ Autoloader::register();
 $pages = [
 'home'=> '../src/view/serveur/serveurHome.php',
 'serveur'=>'../src/view/serveur/serveurHome.php',
-'homeMission' =>'../src/view/mission/homeMission.php',
+'missions' =>'../src/view/mission/homeMission.php',
+'newDossier'=>'../src/view/mission/newDossier.php',
 'error' => '../src/view/error/'
 ];
 
