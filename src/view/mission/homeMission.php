@@ -23,9 +23,7 @@ $form= new Form();
             </div>
             <div>
                 <div class="profil">
-                    <select name="profil" id="profil">
-                        <option value="">mission</option>
-                    </select>        
+                   <?= $form->submit('Editér votre fichier config','udapteConfig', 'udapteConfig') ?>      
             </div>
             </div>
         </div>
@@ -45,6 +43,6 @@ $form= new Form();
             </div>
         </div>
     </div>
-    <div class="img">
+   <!--  <div class="img">
         <img src="asset/img/Patch_Sable_France_HQ.png" alt="logoLfe">
-    </div>
+    </div> -->
