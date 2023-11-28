@@ -27,7 +27,7 @@ $form= new Form();
                 </form>
             </div>
     <div>
-        <p><?= $result ?></p>
+    <?= isset($message['Ok'])? $message['Ok'] :''?>
     </div>
         </div>
     </div>

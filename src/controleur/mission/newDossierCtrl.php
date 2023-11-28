@@ -3,7 +3,8 @@
 use src\class\model\projetStructure\ProjetStructure;
 
 $title = 'Nouveau dossier';
-
+$message= array();
+$error = array();
 if (isset($_POST['create'])) {
     if (!empty($_POST['name'])) {
         if (preg_match('/^[A-Za-z0-9]+$/', $_POST['name'])) {
@@ -27,12 +28,12 @@ if (isset($_POST['create'])) {
 
                 // Enregistrez le tableau mis à jour dans le fichier JSON
                 file_put_contents($cheminDossier, json_encode($configArray));
-                $projetStructure->setMissionTemplate($_POST['name'],$cheminDossier);
+                $projetStructure->setMissionTemplate($_POST['name'], $cheminDossier);
 
                 // Affichez le résultat
-               $result='Dossier créé avec succès.';
+                $message['Ok']='Dossier créé avec succès.';
             } else {
-                $error= 'Échec de la création du dossier.';
+                $message['OK']= 'Échec de la création du dossier.';
             }
         }
     }
