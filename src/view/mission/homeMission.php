@@ -4,7 +4,7 @@ use src\class\otherClass\Form;
 
 include_once '../src/controleur/mission/homeMissionCtrl.php';
 
-$form= new Form();
+$form = new Form();
 ?>
 <title><?= isset($title) ? $title : '' ?></title>
 </head>
@@ -23,18 +23,15 @@ $form= new Form();
             </div>
             <div>
                 <div class="profil">
-                  <a href="?p=udapteConfig"><button>editer le fichier config.cfg</button></a>     
-            </div>
+                    <a href="?p=udapteConfig"><button>editer le fichier config.cfg</button></a>
+                </div>
             </div>
         </div>
         <div class="row justify-content-start">
-            <div class="col-4">                
-            <div class="mission">
-                    <select name="mission" id="mission">
-                        <option value="">mission</option>
-                    </select>        
+            <div class="drop-container col-4" id="dropContainer">
+                <?= $form->dragAndDrop('pbo', 'pbo', 'metter votre presset (fichier html)') ?>
+                <ul id="fileList"></ul>
             </div>
-            </div>   
             <div class="col-4">
             </div>
             <div class="col-4">
@@ -42,6 +39,6 @@ $form= new Form();
             </div>
         </div>
     </div>
-   <!--  <div class="img">
+    <!--  <div class="img">
         <img src="asset/img/Patch_Sable_France_HQ.png" alt="logoLfe">
     </div> -->
