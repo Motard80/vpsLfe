@@ -50,15 +50,16 @@ if(isset($_POST['updateConfig'])){
     }else{
         $formError['newTemplate']="Vous n'avez pas remplis le champs nom du pbo";
     }
-    $configFilePath =$pathConfig. $profil."/config.cfg";
+    if(count($formError)===0){
+        if (file_exists($configFilePath)) {
+            $jsonContent = file_get_contents($configFilePath);
+            $profil = json_decode($jsonContent, true);
+        }
+        $configFilePath =$pathConfig. $profil."/config.cfg";
+        $serverConfigEditor = new EditeurConfigServeur($configFilePath);
+        $serverConfigEditor->setHostname($newHostname);
+        $serverConfigEditor->setPassword($newPassword);
+        $serverConfigEditor->setTemplate($newTemplate);
+    } 
     
-if (file_exists($configFilePath)) {
-    $jsonContent = file_get_contents($configFilePath);
-    $profil = json_decode($jsonContent, true);
-}
-
-$serverConfigEditor = new EditeurConfigServeur($configFilePath);
-$serverConfigEditor->setHostname($newHostname);
-$serverConfigEditor->setPassword($newPassword);
-$serverConfigEditor->setTemplate($newTemplate);
 }
