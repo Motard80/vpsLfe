@@ -19,7 +19,6 @@ $form = new Form();
                 <h1>Gestion des missions</h1>
             </div>
             <div>
-                <p>vous n'avez pas encore de dossier à votre nom <a href="?p=newDossier">cliquez ici</a></p>
             </div>
             <div>
                 <div class="profil">
@@ -28,15 +27,7 @@ $form = new Form();
             </div>
         </div>
         <div class="row justify-content-start">
-            <div class="drop-container col-4" id="dropContainer">
-                <?= $form->dragAndDrop('pbo', 'pbo', 'metter votre presset (fichier html)') ?>
-                <ul id="fileList"></ul>
-            </div>
-            <div class="col-4">
-            </div>
-            <div class="col-4">
-
-            </div>
+            <p><a href="?p=pboUpload">Télécharger votre fichier PBO</a></p>
         </div>
     </div>
     <!--  <div class="img">

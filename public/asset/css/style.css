@@ -15,20 +15,23 @@ nav{
     width: 5px;
     height: auto;
 }
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
+.succes{
+    color: chartreuse;
 }
-
+.error{
+    color: blue;
+}
 .drop-container {
     border: 2px dashed #ccc;
     padding: 20px;
     text-align: center;
     cursor: pointer;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:200px;
+    margin: 0;
 }
 
 .file-input {

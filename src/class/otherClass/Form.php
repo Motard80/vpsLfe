@@ -139,6 +139,6 @@ class Form
     public function dragAndDrop($id, $class, $msgLabel)
     {
         return $this->surrond('<label for"' . $id . '">' . $msgLabel . ': </label> '
-        . '<input type="file" id="' . $id . '" class="' . $class . '" />');
+            . '<input type="file" id="' . $id . '" class="' . $class . '" />');
     }
 }

@@ -7,6 +7,7 @@ $pages = [
 'missions' =>'../src/view/mission/homeMission.php',
 'newDossier'=>'../src/view/mission/newDossier.php',
 'udapteConfig'=>'../src/view/mission/udapteConfig.php',
+'pboUpload'=>'../src/view/mission/pboUpload.php',
 'error' => '../src/view/error/'
 ];
 
