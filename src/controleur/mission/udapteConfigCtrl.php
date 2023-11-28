@@ -7,7 +7,7 @@ $formError = array();
 $img='<img src="asset/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />';
 
 //chemin du fichier config.cfg
-$pathConfig='../src/profil';
+$pathConfig='../src/profil/';
 // Chargez le contenu du fichier JSON
 $cheminFichierJSON = '../src/config/profil_config.json';
 $profil = [];
@@ -51,11 +51,11 @@ if(isset($_POST['updateConfig'])){
         $formError['newTemplate']="Vous n'avez pas remplis le champs nom du pbo";
     }
     if(count($formError)===0){
+        $configFilePath =$pathConfig. $profil."/config.cfg";
         if (file_exists($configFilePath)) {
             $jsonContent = file_get_contents($configFilePath);
             $profil = json_decode($jsonContent, true);
         }
-        $configFilePath =$pathConfig. $profil."/config.cfg";
         $serverConfigEditor = new EditeurConfigServeur($configFilePath);
         $serverConfigEditor->setHostname($newHostname);
         $serverConfigEditor->setPassword($newPassword);

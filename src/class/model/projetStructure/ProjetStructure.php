@@ -1,4 +1,5 @@
 <?php
+
 namespace src\class\model\projetStructure;
 
 class ProjetStructure
@@ -18,7 +19,7 @@ class ProjetStructure
         // Créer le dossier principal
         if (!file_exists($cheminProjet)) {
             mkdir($cheminProjet, 0777, true);
-            $messageCreate = 'Le dossier ' . $profils . ' a bien été créé';
+            $messageCreate = 'Le dossier ' . $profils . ' a bien été créé et le fichier de configuration a été copié avec succès.';
         } else {
             $errorCreate = 'La création du dossier a échoué! Le dossier existe déjà.';
             return $errorCreate;
@@ -51,5 +52,16 @@ class ProjetStructure
             mkdir($chemin, 0777, true);
         }
     }
-}
+    public function setMissionTemplate($profil, $chemin)
+    {
+        // Modifie le champ 'template' dans la classe 'Missions'
+        $configContent = file_get_contents($chemin);
+        $configArray = json_decode($configContent, true);
 
+        // Ajoutez ou modifiez les valeurs selon la structure de votre fichier JSON
+        $configArray['class Missions']['class ' . $profil] = 'nouvelle_valeur';
+
+        // Enregistrez le tableau mis à jour dans le fichier JSON
+        file_put_contents($chemin, json_encode($configArray));
+    }
+}

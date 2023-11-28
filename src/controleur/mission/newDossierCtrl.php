@@ -27,6 +27,7 @@ if (isset($_POST['create'])) {
 
                 // Enregistrez le tableau mis à jour dans le fichier JSON
                 file_put_contents($cheminDossier, json_encode($configArray));
+                $projetStructure->setMissionTemplate($_POST['name'],$cheminDossier);
 
                 // Affichez le résultat
                $result='Dossier créé avec succès.';
