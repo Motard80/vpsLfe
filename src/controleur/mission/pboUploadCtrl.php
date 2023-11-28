@@ -15,7 +15,7 @@ if (file_exists($cheminFichierJSON)) {
 if (isset($_POST['uploadPbo'])) {
     if (!empty($_POST['profil'])) {
         // Répertoire où les fichiers téléchargés seront stockés
-        $uploadDir = '../src/profil/' . $_POST['profil'] . '/mission';
+        $uploadDir = '../src/profil/'. $_POST['profil'] .'/mission';
 
         // Assurez-vous que le répertoire existe, sinon créez-le
         if (!file_exists($uploadDir)) {
@@ -31,7 +31,6 @@ if (isset($_POST['uploadPbo'])) {
                 $tempFile = $_FILES['files']['tmp_name'][$key];
                 // Emplacement cible où le fichier sera déplacé
                 $targetFile = $uploadDir . '/' . $name;
-
                 // Déplacement du fichier du répertoire temporaire vers le répertoire de destination
                 if (move_uploaded_file($tempFile, $targetFile)) {
                     // Ajout du nom du fichier au tableau des fichiers téléchargés avec succès
@@ -39,7 +38,6 @@ if (isset($_POST['uploadPbo'])) {
                 }
             }
         } else {
-            var_dump($_FILES);
             // Réponse JSON indiquant qu'aucun fichier n'a été téléchargé
             $formError['tele']= 'aucun fichier a pu etre téléchargé!';
         }

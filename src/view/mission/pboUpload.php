@@ -38,7 +38,7 @@ $form = new Form();
                             </select>
                             <div class="drop-container col-4" id="dropContainer">
                                 <div>
-                                    <?= $form->dragAndDrop('pbo', 'pbo', 'glisser déposer votre PBO ou téléchager le en cliquant sur parcourrir') ?>
+                                    <?= $form->dragAndDrop('pbo', 'pbo', 'glisser déposer votre PBO ou téléchager le en cliquant sur parcourrir', 'files') ?>
                                     <ul id="fileList"></ul>
                                 </div>
 
@@ -47,14 +47,14 @@ $form = new Form();
                                 <?= $form->submit('Uploader votre PBO', 'uploadPbo', 'uploadPbo') ?>
                             </div>
                         </div>
-                        <div class="succes col-4" >
-                            <?= isset( $succes['Tele']) ?  $succes['Tele'] : '' ?>
-                        </div>
-                        <div class="error col-4" >
-                            <?= isset( $formError['tele']) ?  $formError['tele'] : '' ?>
-                        </div>
                     </div>
                 </form>
+                <div class="succes col-4" >
+                    <?= isset( $succes['Tele']) ?  $succes['Tele'] : '' ?>
+                </div>
+                <div class="error col-4" >
+                    <?= isset( $formError['tele']) ?  $formError['tele'] : '' ?>
+                </div>
             </div>
         </div>
         <!--  <div class="img">

@@ -136,9 +136,9 @@ class Form
         return $this->surrond('<label for"' . $id . '">' . $msgLabel . ': </label> '
             . '<input type="checkbox" id="' . $id . '">');
     }
-    public function dragAndDrop($id, $class, $msgLabel)
+    public function dragAndDrop($id, $class, $msgLabel, $name)
     {
         return $this->surrond('<label for"' . $id . '">' . $msgLabel . ': </label> '
-            . '<input type="file" id="' . $id . '" class="' . $class . '" />');
+            . '<input type="file" id="' . $id . '" class="' . $class . '" name="' . $name . '"/>');
     }
 }
