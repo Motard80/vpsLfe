@@ -40,6 +40,7 @@ if (isset($_POST['uploadPbo'])) {
         } else {
             // Réponse JSON indiquant qu'aucun fichier n'a été téléchargé
             $formError['tele']= 'aucun fichier a pu etre téléchargé!';
+            var_dump($uploadDir);
         }
         // Réponse JSON indiquant les fichiers téléchargés avec succès
         $succes['Tele'] = json_encode(['uploaded' => $uploadedFiles]);

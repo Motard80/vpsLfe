@@ -43,7 +43,7 @@ $form= new Form();
                     <p class="text-danger" id="ErrorNewPassword"><?= isset($formError['newPassword']) ? $img .$formError['newPassword'] .$img : '' ?></p>
                 </div>
                 <div>
-                    <?= $form->inputText('newTemplate','newTemplate','Nom de votre fichier PBO') ?>
+                    <?= $form->inputText('newTemplate','newTemplate','Nom de votre fichier PBO sans l\'extenction .pbo') ?>
                     <p class="text-danger" id="ErrorNewTemplate"><?= isset($formError['newTemplate']) ? $img .$formError['newTemplate'] .$img : '' ?></p>
                 </div>
                 <div>

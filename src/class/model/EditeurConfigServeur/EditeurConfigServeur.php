@@ -6,59 +6,62 @@ class EditeurConfigServeur
 {
     private $configFilePath;
 
-    public function __construct($configFilePath)
+    public function __construct($cheminFichierConfig)
     {
-        $this->configFilePath = $configFilePath;
+        $this->configFilePath = $cheminFichierConfig;
     }
 
-    public function setHostname($newHostname)
+    public function setHostname($nouveauNomHote)
     {
-        $this->updateConfig('hostname', $newHostname);
+        $this->mettreAJourConfig('hostname', $nouveauNomHote);
     }
 
-    public function setPassword($newPassword)
+    public function setPassword($nouveauMotDePasse)
     {
-        $this->updateConfig('password', $newPassword);
+        $this->mettreAJourConfig('password', $nouveauMotDePasse);
     }
 
-    public function setTemplate($newTemplate)
+    public function setTemplate($nouveauTemplate)
     {
-        $this->updateConfig('template', $newTemplate);
+        $this->mettreAJourConfig('template', $nouveauTemplate);
     }
 
-    public function setMissionTemplate($missionName, $profil)
+    public function setMissionTemplate($nouveauTemplate)
     {
-        // Charge le contenu du fichier de configuration
-        $configContents = file_get_contents($this->configFilePath);
+        // Charger le contenu du fichier de configuration
+        $contenuConfig = file_get_contents($this->configFilePath);
 
-        // Recherche la classe Missions dans le fichier de configuration
-        preg_match("/class Missions\s*{(.+?)\s*}/s", $configContents, $matches);
+        // Trouver la classe Missions dans le fichier de configuration
+        $debutMissions = strpos($contenuConfig, "class Missions");
+        $finMissions = strpos($contenuConfig, "};", $debutMissions);
 
-        // Vérifie si la classe Missions a été trouvée
-        if (isset($matches[1])) {
-            // Remplace le template dans la classe Missions
-            $newConfigContents = preg_replace("/template\s*=\s*[\"'][^\"']+[\"'];/", "template = \"$missionName\";", $matches[1]);
+        // Vérifier si la classe Missions a été trouvée
+        if ($debutMissions !== false && $finMissions !== false) {
+            // Extraire le contenu de la classe Missions
+            $classeMissions = substr($contenuConfig, $debutMissions, $finMissions - $debutMissions + 2);
 
-            // Met à jour le fichier de configuration
-            $configContents = str_replace($matches[1], $newConfigContents, $configContents);
-            file_put_contents($this->configFilePath, $configContents);
+            // Remplacer la classe Missions par le nouveau template
+            $nouveauContenu = str_replace($classeMissions, "class Missions {\n    $nouveauTemplate\n};", $contenuConfig);
+
+            // Mettre à jour le fichier de configuration
+            file_put_contents($this->configFilePath, $nouveauContenu);
         }
     }
 
-    private function updateConfig($key, $value)
+    private function mettreAJourConfig($cle, $valeur)
     {
-        // Check if the file exists
+        // Vérifier si le fichier existe
         if (file_exists($this->configFilePath)) {
-            // Read the current contents of the config file
-            $configContents = file_get_contents($this->configFilePath);
+            // Lire le contenu actuel du fichier de configuration
+            $contenuConfig = file_get_contents($this->configFilePath);
 
-            // Replace the existing value with the new value
-            $configContents = preg_replace("/$key\s*=\s*[\"'].*?[\"'];/", "$key = \"$value\";", $configContents);
+            // Remplacer la valeur existante par la nouvelle valeur
+            $contenuConfig = str_replace("$cle = ", "$cle = $valeur ", $contenuConfig);
 
-            // Write the updated contents back to the config file
-            file_put_contents($this->configFilePath, $configContents);
+            // Écrire le contenu mis à jour dans le fichier de configuration
+            file_put_contents($this->configFilePath, $contenuConfig);
         } else {
-            echo "The configuration file does not exist: " . $this->configFilePath;
+            echo "Le fichier de configuration n'existe pas : " . $this->configFilePath;
         }
     }
 }
