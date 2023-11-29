@@ -16,3 +16,8 @@ if(isset($_GET['dossier'])){
         $message='Le dossier a été créer vous pouvez procéder au paramettrage de votre fichier config';
     }
 }
+if(isset($_GET['uplod'])){
+    if(preg_match('/^[A-Za-z0-9]+$/', $_GET['uplod'])){
+        $message='Les fichier ont été téléchargé avec succès:';
+    }
+}
