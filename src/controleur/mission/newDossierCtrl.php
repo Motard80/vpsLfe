@@ -29,7 +29,10 @@ if (isset($_POST['create'])) {
                 // Enregistrez le tableau mis à jour dans le fichier JSON
                 file_put_contents($cheminDossier, json_encode($configArray)); 
                 $projetStructure->setMissionTemplate($_POST['name'], $cheminDossier);
-
+                    
+                $newLocation = "?p=missions&dossier=ok";
+                header("Location: $newLocation", true, 301);
+                exit();
 
                 // Affichez le résultat
                 $message['Ok']='Dossier créé avec succès.';

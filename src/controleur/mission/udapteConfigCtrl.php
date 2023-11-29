@@ -76,5 +76,11 @@ if (isset($_POST['updateConfig'])) {
         $serverConfigEditor->setPassword($newPassword);
         //Modification de la variable template de la class mission 
         $serverConfigEditor->setMissionTemplate($newTemplate); // Utilisation de la nouvelle méthode
+        $newLocation = "?p=missions&config=ok";
+                header("Location: $newLocation", true, 301);
+                exit();
+
+    }else{
+        $formError['technical']='une erreur technique est survenue contacté un Staff Arma3';
     }
 }

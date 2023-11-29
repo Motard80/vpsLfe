@@ -20,6 +20,9 @@ $form= new Form();
             </div>
         </div>
         <div class="row justify-content-center">
+            <div>
+            <p class="text-danger" id="ErrorNewTemplate"><?= isset($formError['technical']) ? $img .$formError['technical'] .$img : '' ?></p>
+            </div>
             <form action="" method="post">
                 <div class="profil">
                     <select name="profil" id="profil">

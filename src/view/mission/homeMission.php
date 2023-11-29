@@ -19,6 +19,11 @@ $form = new Form();
                 <h1>Gestion des missions</h1>
             </div>
             <div>
+                
+                <?= isset($message) ? $message :"" ?>
+            </div>
+            <div>
+                <p>vous n'avez pas encore de dossier à votre nom <a href="?p=newDossier">cliquez ici</a></p>
             </div>
             <div>
                 <div class="profil">
