@@ -47,17 +47,21 @@ class EditeurConfigServeur
             file_put_contents($this->configFilePath, $nouveauContenu);
         }
     }
-
     private function mettreAJourConfig($cle, $valeur)
     {
         // Vérifier si le fichier existe
         if (file_exists($this->configFilePath)) {
             // Lire le contenu actuel du fichier de configuration
             $contenuConfig = file_get_contents($this->configFilePath);
-
-            // Remplacer la valeur existante par la nouvelle valeur
-            $contenuConfig = str_replace("$cle = ", "$cle = $valeur ", $contenuConfig);
-
+    
+            // Utiliser des conditions pour mettre à jour la bonne clé
+            if ($cle === 'hostname' || $cle === 'password') {
+                // Remplacer la valeur existante par la nouvelle valeur
+                $contenuConfig = preg_replace("/$cle\s*=\s*[^;]*/", "$cle = $valeur", $contenuConfig);
+            } else {
+                // Remplacer la valeur existante par la nouvelle valeur
+                $contenuConfig = str_replace("$cle = ", "$cle = $valeur ", $contenuConfig);
+            }
             // Écrire le contenu mis à jour dans le fichier de configuration
             file_put_contents($this->configFilePath, $contenuConfig);
         } else {

@@ -1,5 +1,6 @@
 <?php
 
+use src\class\model\EditeurConfigServeur\ConfigManager;
 use src\class\model\EditeurConfigServeur\EditeurConfigServeur;
 
 $title = 'Éditer le fichier config';
@@ -26,7 +27,7 @@ if (isset($_POST['updateConfig'])) {
     }
     if (!empty($_POST['newHostname'])) {
         if (preg_match('/^[A-Za-z0-9_]+$/', $_POST['newHostname'])) {
-            $newHostname = htmlspecialchars($_POST['newHostname']);
+            $hostname = htmlspecialchars($_POST['newHostname']);
         } else {
             $formError['newHostname'] = "Merci de ne mettre que des lettres ou des chiffres dans le nom de votre mission et remplacer les espaces par _ !";
         }
@@ -35,7 +36,7 @@ if (isset($_POST['updateConfig'])) {
     }
     if (!empty($_POST['newPassword'])) {
         if (preg_match('/^[A-Za-z0-9]+$/', $_POST['newPassword'])) {
-            $newPassword = htmlspecialchars($_POST['newPassword']);
+            $password = htmlspecialchars($_POST['newPassword']);
         } else {
             $formError['newPassword'] = "Merci de ne mettre que des lettres ou des chiffres VOTRE MOT DE PASSE!";
         }
@@ -45,9 +46,9 @@ if (isset($_POST['updateConfig'])) {
     if (isset($_POST['newTemplate'])) {
         if (preg_match('/^[A-Za-z0-9_]+$/', $_POST['newTemplate'])) {
             $nameTemplate = htmlspecialchars($_POST['newTemplate']);
-            $newTemplate = 
-               '  class '.$profil.' {
-                   template = '.$nameTemplate.'.pbo;
+            $newTemplate =
+                '  class ' . $profil . ' {
+                   template = "' . $nameTemplate . '.pbo";
                     //difficulty = "Regular";					// Server difficulty Settings (Recruit, Regular, Veteran, Mercenary)
                      difficulty = "Custom";
                      autoSelectMission = false;
@@ -63,7 +64,10 @@ if (isset($_POST['updateConfig'])) {
         if (file_exists($configFilePath)) {
             $jsonContent = file_get_contents($configFilePath);
             $profil = json_decode($jsonContent, true);
-        } $serverConfigEditor = new EditeurConfigServeur($configFilePath);
+        } // Utilisation de la classe EditeurConfigServeur
+        $newHostname= "\"".$hostname."\"";
+        $newPassword= "\"". $password."\"" ;
+        $serverConfigEditor = new EditeurConfigServeur($configFilePath);
 
         // Modification du hostname
         $serverConfigEditor->setHostname($newHostname);
@@ -74,4 +78,3 @@ if (isset($_POST['updateConfig'])) {
         $serverConfigEditor->setMissionTemplate($newTemplate); // Utilisation de la nouvelle méthode
     }
 }
-
