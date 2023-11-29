@@ -2,8 +2,8 @@
 
 namespace src\class\model\mission;class FileUploader
 {
-    private $allowedExtensionsPbo = ['pbo', 'html'];
-    private $allowedExtensionsHtml = [ 'html', "pbo"];
+    private $allowedExtensionsPbo = ['pbo'];
+    private $allowedExtensionsHtml = [ 'html'];
 
     public function uploadFilePbo($file, $profil)
     {

@@ -44,18 +44,14 @@ if (isset($_POST['updateConfig'])) {
         $formError['newPassword'] = "Vous n'avez pas rempli le champ mot de passe";
     }
     if (isset($_POST['newTemplate'])) {
-        if (preg_match('/^[A-Za-z0-9_]+$/', $_POST['newTemplate'])) {
             $nameTemplate = htmlspecialchars($_POST['newTemplate']);
             $newTemplate =
                 '  class ' . $profil . ' {
-                   template = "' . $nameTemplate . '.pbo";
+                   template = "' . $nameTemplate . '";
                     //difficulty = "Regular";					// Server difficulty Settings (Recruit, Regular, Veteran, Mercenary)
                      difficulty = "Custom";
                      autoSelectMission = false;
                       //Respawn = "2"; ';
-        } else {
-            $formError['newTemplate'] = "Merci de ne mettre que des lettres ou des chiffres dans le nom de votre PBO et remplacer les espaces par _ ";
-        }
     } else {
         $formError['newTemplate'] = "Vous n'avez pas rempli le champ nom du PBO";
     }
