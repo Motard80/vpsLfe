@@ -35,7 +35,7 @@ $form = new Form();
                             </select>
                             <div class="drop-container col-4" id="dropContainer">
                                 <div>
-                                    <?= $form->dragAndDrop('pbo', 'pbo', 'glisser déposer votre PBO ou téléchager le en cliquant sur parcourrir', 'files') ?>
+                                    <?= $form->dragAndDrop('pbo', 'pbo', 'glisser déposer votre PBO ou téléchager le en cliquant sur parcourrir', 'pbo') ?>
                                     <ul id="fileList"></ul>
                                 </div>
 
