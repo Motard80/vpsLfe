@@ -20,6 +20,34 @@ if (file_exists($cheminFichierJSON)) {
 }
 
 if (isset($_POST['updateConfig'])) {
+    
+    if(!empty( $_POST['profil'])){
+        $profil = $_POST['profil'];
+    }else{
+        $formError['tele']="vous avez oubliez de selectionner le profil";
+    }
+    if(!empty($_FILES['pbo'])&& !empty($_FILES['presset'])){
+        $filePbo = $_FILES['pbo'];
+        $fileHtml= $_FILES['presset'];
+    }
+    // Vérification du profil et téléchargement du fichier
+    if (!empty($profil) && !empty($fileHtml['name'])) {
+        $uploadedFileName = $fileUploader->uploadFilePbo($filePbo,$profil);
+        $uploadedFileNameHtml= $fileUploader->uploadFileHtml($fileHtml, $profil);
+        if ($uploadedFileName !== false) {
+            // Fichier téléchargé avec succès, vous pouvez faire d'autres traitements ici
+            $newLocation = "?p=missions&uplod=ok";
+            header("Location: $newLocation", true, 301);
+            exit();
+
+        } else {
+            // Erreur lors du téléchargement du fichier
+            $formError['tele'] = "Erreur lors du téléchargement du fichier. Veuillez réessayer.";
+        }
+    } else {
+        // Profil ou fichier manquant
+        $formError['tele'] = "Veuillez sélectionner un profil et télécharger un fichier.";
+    }
     if (!empty($_POST['profil'])) {
         $profil = htmlspecialchars($_POST['profil']);
     } else {
@@ -79,4 +107,8 @@ if (isset($_POST['updateConfig'])) {
     }else{
         $formError['technical']='une erreur technique est survenue contacté un Staff Arma3';
     }
+}
+
+// Traitement du formulaire
+if (isset($_POST['uploadPbo'])) {
 }
