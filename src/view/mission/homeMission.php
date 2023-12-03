@@ -29,8 +29,8 @@ $form = new Form();
             </div>
         </div>
         <div class="row justify-content-start">
-            <p><a href="?p=pboUpload">Télécharger votre fichier PBO</a></p>
-        </div>
+<!--             <p><a href="?p=pboUpload">Télécharger votre fichier PBO</a></p>
+ -->        </div>
     </div>
     <!--  <div class="img">
         <img src="asset/img/Patch_Sable_France_HQ.png" alt="logoLfe">

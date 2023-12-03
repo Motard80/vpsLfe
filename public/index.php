@@ -5,7 +5,7 @@ Autoloader::register();
 $pages = [
 'home'=> '../src/view/serveur/serveurHome.php',
 'serveur'=>'../src/view/serveur/serveurHome.php',
-'missions' =>'../src/view/mission/homeMission.php',
+'missions' =>'../src/view/mission/udapteConfig.php',
 'newDossier'=>'../src/view/mission/newDossier.php',
 'udapteConfig'=>'../src/view/mission/udapteConfig.php',
 'pboUpload'=>'../src/view/mission/pboUpload.php',

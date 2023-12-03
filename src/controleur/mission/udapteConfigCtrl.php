@@ -2,6 +2,7 @@
 
 use src\class\model\EditeurConfigServeur\ConfigManager;
 use src\class\model\EditeurConfigServeur\EditeurConfigServeur;
+use src\class\model\mission\FileUploader;
 
 $title = 'Éditer le fichier config';
 $formError = array();
@@ -9,7 +10,7 @@ $img = '<img src="asset/img/Icone/WarningRond.png" style="width: 50px;" class="i
 
 // Chemin du fichier config.cfg
 $pathConfig = '../src/profil/';
-
+$fileUploader = new FileUploader();
 // Charger le contenu du fichier JSON
 $cheminFichierJSON = '../src/config/profil_config.json';
 $profil = [];
@@ -19,12 +20,30 @@ if (file_exists($cheminFichierJSON)) {
     $profil = json_decode($jsonContent, true);
 }
 if (isset($_POST['updateConfig'])) {
-    var_dump("submit");
     if (!empty($_POST['profil'])) {
         $profil = htmlspecialchars($_POST['profil']);
         $_SESSION['lastProfilesSelect']=$profil;
     } else {
         $formError['profil'] = "Merci de sélectionner un profil";
+    }
+    if(!empty($_FILES['pbo'])&& !empty($_FILES['presset'])){
+        $filePbo = $_FILES['pbo'];
+        $fileHtml= $_FILES['presset'];
+    }
+    // Vérification du profil et téléchargement du fichier
+    if (!empty($profil) && !empty($fileHtml['name'])) {
+        $uploadedFileName = $fileUploader->uploadFilePbo($filePbo,$profil);
+        $uploadedFileNameHtml= $fileUploader->uploadFileHtml($fileHtml, $profil);
+        if ($uploadedFileName !== false) {
+            // Fichier téléchargé avec succès, vous pouvez faire d'autres traitements ici
+            $succes['tele']='Fichier mise à jours';
+        } else {
+            // Erreur lors du téléchargement du fichier
+            $formError['tele'] = "Erreur lors du téléchargement du fichier. Veuillez réessayer.";
+        }
+    } else {
+        // Profil ou fichier manquant
+        $formError['tele'] = "Veuillez sélectionner un profil et télécharger un fichier.";
     }
     if (!empty($_POST['newHostname'])) {
         if (preg_match('/^[A-Za-z0-9_]+$/', $_POST['newHostname'])) {

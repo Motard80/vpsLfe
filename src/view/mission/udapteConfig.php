@@ -31,9 +31,7 @@ $form = new Form();
                       <?php                            
                             // Générez les options à partir du tableau JSON
                             foreach ($profil as $profils) { ?>
-                            
-                                <option value="<?= $profils ?>"><?= $profils ?></option>';
-
+                                <option value="<?= $profils ?>"><?= $profils ?></option>
                             <?php  }
                             ?>
                         </select>
@@ -43,6 +41,7 @@ $form = new Form();
                     <div>
                         <?= $form->dragAndDrop('pbo', 'pbo', 'glisser déposer votre PBO ou téléchager le en cliquant sur parcourrir', 'pbo') ?>
                         <ul id="fileList"></ul>
+
                     </div>
                 </div>
                 <div class="drop-container col-4" id="dropContainer">
@@ -52,7 +51,7 @@ $form = new Form();
                     </div>
                 </div>
                 <div class="succes col-4">
-                    <?= isset($succes['Tele']) ?  $succes['Tele'] : '' ?>
+                    <?= isset($succes['tele']) ?  $succes['tele'] : '' ?>
                 </div>
                 <div class="error col-4">
                     <?= isset($formError['tele']) ?  $formError['tele'] : '' ?>

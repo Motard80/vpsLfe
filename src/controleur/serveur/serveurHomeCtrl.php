@@ -19,7 +19,6 @@ if (file_exists($cheminFichierJSON)) {
     $jsonContent = file_get_contents($cheminFichierJSON);
     $profil = json_decode($jsonContent, true);
 }
-var_dump($profil);
 $title='gestion du serveur';
 if(isset($_POST['start'])){
     if(!empty($_POST['profil'])){
@@ -42,5 +41,5 @@ if(isset($_POST['start'])){
     $message['stop']='Serveur arreter';
     
 }else{
-    $error['stop']='Le serveur ne s\'est pas arreter correctement';
+    /* $error['stop']='Le serveur ne s\'est pas arreter correctement'; */
 }
