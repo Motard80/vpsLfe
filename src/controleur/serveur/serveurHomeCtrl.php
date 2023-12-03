@@ -23,6 +23,7 @@ var_dump($profil);
 $title='gestion du serveur';
 if(isset($_POST['start'])){
     if(!empty($_POST['profil'])){
+        $_SESSION['lastProfilesSelect']=$_POST['profil'];
         Start::startServeur();
         $message['start']='Serveur lancé avec le profils  '. $_POST['profil'];
     }else{

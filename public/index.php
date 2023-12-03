@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../src/class/otherClass/Autoloder.php';
 Autoloader::register();
 $pages = [

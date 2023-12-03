@@ -22,6 +22,7 @@ if (isset($_POST['updateConfig'])) {
     var_dump("submit");
     if (!empty($_POST['profil'])) {
         $profil = htmlspecialchars($_POST['profil']);
+        $_SESSION['lastProfilesSelect']=$profil;
     } else {
         $formError['profil'] = "Merci de sélectionner un profil";
     }

@@ -27,32 +27,30 @@ $form = new Form();
                 <div class="row justify-content-start">
                     <div>
                         <select name="profil" id="profil">
-                            <option value="">Profil</option>
-                            <?php
+                        <option value="<?= isset($_SESSION['lastProfilesSelect'] )? $_SESSION['lastProfilesSelect'] : 'Selectionnez un profil' ?>"><?=  isset($_SESSION['lastProfilesSelect'])? 'Dernier profil séléctionnez: '. $_SESSION['lastProfilesSelect'] : 'Selectionnez un profil'  ?></option>';
+                      <?php                            
                             // Générez les options à partir du tableau JSON
                             foreach ($profil as $profils) { ?>
+                            
                                 <option value="<?= $profils ?>"><?= $profils ?></option>';
 
                             <?php  }
                             ?>
                         </select>
-                        <div class="drop-container col-4" id="dropContainer">
-                            <div>
-                                <?= $form->dragAndDrop('pbo', 'pbo', 'glisser déposer votre PBO ou téléchager le en cliquant sur parcourrir', 'pbo') ?>
-                                <ul id="fileList"></ul>
-                            </div>
-
-                        </div>
-                        </select>
-                        <div class="drop-container col-4" id="dropContainer">
-                            <div>
-                                <?= $form->dragAndDrop('presset', 'presset', 'glisser déposer votre presset ou téléchager le en cliquant sur parcourrir', 'presset') ?>
-                                <ul id="fileList"></ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
-
+                <div class="drop-container col-4" id="dropContainer">
+                    <div>
+                        <?= $form->dragAndDrop('pbo', 'pbo', 'glisser déposer votre PBO ou téléchager le en cliquant sur parcourrir', 'pbo') ?>
+                        <ul id="fileList"></ul>
+                    </div>
+                </div>
+                <div class="drop-container col-4" id="dropContainer">
+                    <div>
+                        <?= $form->dragAndDrop('presset', 'presset', 'glisser déposer votre presset ou téléchager le en cliquant sur parcourrir', 'presset') ?>
+                        <ul id="fileList"></ul>
+                    </div>
+                </div>
                 <div class="succes col-4">
                     <?= isset($succes['Tele']) ?  $succes['Tele'] : '' ?>
                 </div>

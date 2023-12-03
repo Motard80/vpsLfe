@@ -38,15 +38,12 @@ $form = new Form();
                                     <?= $form->dragAndDrop('pbo', 'pbo', 'glisser déposer votre PBO ou téléchager le en cliquant sur parcourrir', 'pbo') ?>
                                     <ul id="fileList"></ul>
                                 </div>
-
                             </div>
-                            </select>
                             <div class="drop-container col-4" id="dropContainer">
                                 <div>
                                     <?= $form->dragAndDrop('presset', 'presset', 'glisser déposer votre presset ou téléchager le en cliquant sur parcourrir', 'presset') ?>
                                     <ul id="fileList"></ul>
                                 </div>
-
                             </div>
                             <div>
                                 <?= $form->submit('Uploader votre PBO et votre presset', 'uploadPbo', 'uploadPbo') ?>
