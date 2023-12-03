@@ -23,9 +23,6 @@ $form = new Form();
                 <?= isset($message) ? $message :"" ?>
             </div>
             <div>
-                <p>vous n'avez pas encore de dossier à votre nom <a href="?p=newDossier">cliquez ici</a></p>
-            </div>
-            <div>
                 <div class="profil">
                     <a href="?p=udapteConfig"><button>editer le fichier config.cfg</button></a>
                 </div>

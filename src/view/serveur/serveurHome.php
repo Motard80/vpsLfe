@@ -20,10 +20,11 @@ $form = new Form();
                 <h1>Gestion du serveur</h1>
             </div>
         </div>
-        <?php
-        $output = shell_exec('cat /etc/hosts');
-        echo "<pre>$output</pre>";
-        ?>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <p>vous n'avez pas encore de dossier à votre nom <a href="?p=newDossier">cliquez ici</a></p>
+        </div>
     </div>
     <div>
         <form action="" method="post" name="serveur">
@@ -35,8 +36,8 @@ $form = new Form();
                         // Générez les options à partir du tableau JSON
                         foreach ($profil as $profils) { ?>
                             <option value="<?= isset($profils) ? $profils : '' ?>"><?= isset($profils) ? $profils : '' ?></option>
-                        <?php 
-                         }
+                        <?php
+                        }
                         ?>
                     </select>
                 </div>
