@@ -52,31 +52,31 @@ $form = new Form();
                         </div>
                     </div>
                 </div>
+
+                <div class="succes col-4">
+                    <?= isset($succes['Tele']) ?  $succes['Tele'] : '' ?>
+                </div>
+                <div class="error col-4">
+                    <?= isset($formError['tele']) ?  $formError['tele'] : '' ?>
+                </div>
+                <p class="text-danger" id="ErrorProfil"><?= isset($formError['profil']) ? $img . $formError['profil'] . $img : '' ?></p>
+                <div>
+                    <?= $form->inputText('newHostname', 'newHostname', 'Nom de la mission ') ?>
+                    <p class="text-danger" id="ErrorNewHostname"><?= isset($formError['newHostname']) ? $img . $formError['newHostname'] . $img : '' ?></p>
+                </div>
+                <div>
+                    <?= $form->inputText('newPassword', 'newPassword', 'Mot de passe pour votre mission ') ?>
+                    <p class="text-danger" id="ErrorNewPassword"><?= isset($formError['newPassword']) ? $img . $formError['newPassword'] . $img : '' ?></p>
+                </div>
+                <div>
+                    <?= $form->inputText('newTemplate', 'newTemplate', 'Nom de votre fichier PBO sans l\'extenction .pbo') ?>
+                    <p class="text-danger" id="ErrorNewTemplate"><?= isset($formError['newTemplate']) ? $img . $formError['newTemplate'] . $img : '' ?></p>
+                </div>
+                <div>
+                    <?= $form->submit('Modifier', 'updateConfig', 'updateConfig') ?>
+                </div>
             </form>
-            <div class="succes col-4">
-                <?= isset($succes['Tele']) ?  $succes['Tele'] : '' ?>
-            </div>
-            <div class="error col-4">
-                <?= isset($formError['tele']) ?  $formError['tele'] : '' ?>
-            </div>
-            <p class="text-danger" id="ErrorProfil"><?= isset($formError['profil']) ? $img . $formError['profil'] . $img : '' ?></p>
         </div>
-        <div>
-            <?= $form->inputText('newHostname', 'newHostname', 'Nom de la mission ') ?>
-            <p class="text-danger" id="ErrorNewHostname"><?= isset($formError['newHostname']) ? $img . $formError['newHostname'] . $img : '' ?></p>
-        </div>
-        <div>
-            <?= $form->inputText('newPassword', 'newPassword', 'Mot de passe pour votre mission ') ?>
-            <p class="text-danger" id="ErrorNewPassword"><?= isset($formError['newPassword']) ? $img . $formError['newPassword'] . $img : '' ?></p>
-        </div>
-        <div>
-            <?= $form->inputText('newTemplate', 'newTemplate', 'Nom de votre fichier PBO sans l\'extenction .pbo') ?>
-            <p class="text-danger" id="ErrorNewTemplate"><?= isset($formError['newTemplate']) ? $img . $formError['newTemplate'] . $img : '' ?></p>
-        </div>
-        <div>
-            <?= $form->submit('Modifier', 'updateConfig', 'updateConfig') ?>
-        </div>
-        </form>
     </div>
     </div>
     <!--  <div class="img">
