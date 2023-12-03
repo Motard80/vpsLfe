@@ -1,6 +1,4 @@
 <?php
-
-use src\class\model\EditeurConfigServeur\ConfigManager;
 use src\class\model\EditeurConfigServeur\EditeurConfigServeur;
 use src\class\model\mission\FileUploader;
 

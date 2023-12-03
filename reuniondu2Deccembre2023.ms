@@ -8,6 +8,7 @@ liste déroulante des html et pbo
 dans le json :  pbo htlm  à rajouter dans le dossier 
 dans le json général juste $profil
 
+Faire en Ajax la récupération du nom des fichier a mettre dans l'input nom de votre fichier PBO 
 
 
 

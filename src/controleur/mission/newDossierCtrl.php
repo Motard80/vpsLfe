@@ -15,7 +15,7 @@ if (isset($_POST['create'])) {
             // Utilisez la classe ProjetStructure
             $projetStructure = new ProjetStructure($cheminParent);
             $result = $projetStructure->creerStructure($_POST['name']);
-
+            $_SESSION['lastProfilesSelect']=$_POST['name'];
             // Vérifiez si la création du dossier a réussi
             if ($result) {
                 // Chargez le contenu actuel du fichier JSON
@@ -33,6 +33,7 @@ if (isset($_POST['create'])) {
                 $newLocation = "?p=missions&dossier=ok";
                 header("Location: $newLocation", true, 301);
                 exit();
+
 
                 // Affichez le résultat
                 $message['Ok']='Dossier créé avec succès.';
