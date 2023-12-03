@@ -38,7 +38,7 @@ $form= new Form();
                     <p class="text-danger" id="ErrorProfil"><?= isset($formError['profil']) ? $img .$formError['profil'] .$img : '' ?></p>
                 </div>
                 <div>
-                <?= $form->inputText('newHostname', 'newHostname', 'Nom de la mission') ?>
+                <?= $form->inputText('newHostname', 'newHostname', 'Nom de la mission ') ?>
                     <p class="text-danger" id="ErrorNewHostname"><?= isset($formError['newHostname']) ? $img .$formError['newHostname'] .$img : '' ?></p>
                 </div>
                 <div>

@@ -43,4 +43,3 @@ if(isset($_POST['start'])){
 }else{
     $error['stop']='Le serveur ne s\'est pas arreter correctement';
 }
-
