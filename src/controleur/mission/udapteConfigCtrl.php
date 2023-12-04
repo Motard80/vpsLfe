@@ -28,6 +28,7 @@ $hostname = $editeurConfig->getHostname();
 $password = $editeurConfig->getPassword();
 $template = $editeurConfig->getTemplate();
 
+chmod($cheminConfig, 0755);
 if (isset($_POST['updateConfig'])) {
     if (!empty($_POST['profil'])) {
         $profil = htmlspecialchars($_POST['profil']);
@@ -86,24 +87,43 @@ if (isset($_POST['updateConfig'])) {
     }
     if (count($formError) === 0) {
         $configFilePath = $pathConfig . $profil . "/config.cfg";
-        if (file_exists($configFilePath)) {
-            $jsonContent = file_get_contents($configFilePath);
-            $profil = json_decode($jsonContent, true);
-        } // Utilisation de la classe EditeurConfigServeur
-        $newHostname= "\"".$hostname."\"";
-        $newPassword= "\"". $password."\"" ;
+        $newJson = $pathConfig . $profil;
+    
+        // Vérifier si le tableau JSON existe, sinon le créer
+        if (!file_exists($cheminFichierJSON)) {
+            $profilArray = [];
+        } else {
+            // Charger le tableau JSON existant
+            $jsonContent = file_get_contents($newJson);
+            $profilArray = json_decode($jsonContent, true);
+        }
+    
+        // Ajouter les informations au tableau JSON
+        $profilArray[$profil] = [
+            'hostname' => $_POST['newHostname'],
+            'template' => $_POST['newTemplate'],
+            // Ajoutez d'autres clés/valeurs selon vos besoins
+        ];
+    
+        // Enregistrez le tableau JSON mis à jour dans le fichier
+        file_put_contents($newJson, json_encode($profilArray, JSON_PRETTY_PRINT));
+    
+        // Utilisation de la classe EditeurConfigServeur
+        $newHostname = "\"" . $hostname . "\"";
+        $newPassword = "\"" . $password . "\"";
         $serverConfigEditor = new EditeurConfigServeur($configFilePath);
-
+    
         // Modification du hostname
         $serverConfigEditor->setHostname($newHostname);
-
+    
         // Modification du mot de passe
         $serverConfigEditor->setPassword($newPassword);
-        //Modification de la variable template de la class mission 
+    
+        // Modification de la variable template de la class mission
         $serverConfigEditor->setMissionTemplate($newTemplate); // Utilisation de la nouvelle méthode
-        $succes['tele']='Fichier mise à jours';
-
-    }else{
-        $formError['technical']='une erreur technique est survenue contacté un Staff Arma3';
+    
+        $succes['tele'] = 'Fichier mis à jour';
+    } else {
+        $formError['technical'] = 'Une erreur technique est survenue. Contactez un Staff Arma3';
     }
 }

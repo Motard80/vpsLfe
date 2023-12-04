@@ -3,7 +3,7 @@
 use src\class\otherClass\Form;
 
 include_once '../src/controleur/mission/udapteConfigCtrl.php';
-include_once '../src/controleur/mission/pboUploadCtrl.php';
+//include_once '../src/controleur/mission/pboUploadCtrl.php';
 $form = new Form();
 ?>
 <title><?= isset($title) ? $title : '' ?></title>

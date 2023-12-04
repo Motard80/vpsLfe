@@ -52,16 +52,31 @@ class ProjetStructure
             mkdir($chemin, 0777, true);
         }
     }
-    public function setMissionTemplate($profil, $chemin)
+    public function setMissionTemplate($profil, $cheminProjet)
     {
-        // Chargez le contenu actuel du fichier JSON
-        $configContent = file_get_contents($chemin);
+        // Créer le répertoire pour le profil s'il n'existe pas encore
+        $nouveauRepertoire = $cheminProjet . '/' . $profil;
+        if (!file_exists($nouveauRepertoire)) {
+            mkdir($nouveauRepertoire, 0777, true);
+        }
+    
+        // Charger le contenu actuel du fichier JSON
+        $source = $nouveauRepertoire . '/config.cfg';
+        $configContent = file_get_contents($source);
         $configArray = json_decode($configContent, true);
-
-        // Modifiez la classe Missions pour le profil donné
-        $configArray;
-
-        // Enregistrez le tableau mis à jour dans le fichier JSON
-        file_put_contents($chemin, json_encode($configArray));
+    
+        // Modifier la classe Missions pour le profil donné
+        $configArray['profil'] = $profil;
+    
+        // Enregistrer le tableau mis à jour dans un fichier JSON dans le nouveau répertoire
+        $nouveauChemin = $nouveauRepertoire . '/' . $profil . '.json';
+        file_put_contents($nouveauChemin, json_encode($configArray));
+    
+        // Supprimer l'ancien fichier de configuration s'il existe
+        if (file_exists($source)) {
+            unlink($source);
+        }
     }
+    
+    
 }

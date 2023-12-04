@@ -61,3 +61,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Exemple : fonction pour envoyer les fichiers au serveur (AJAX)
     // function sendFilesToServer(files) { ... }
 });
+$(document).ready(function () {
+    // Attachez un gestionnaire d'événements au changement de l'input PBO
+    $('input[name="pbo"]').on('change', function () {
+        // Récupérez la liste des fichiers sélectionnés
+        var fileList = $(this)[0].files;
+
+        // Créez une chaîne pour stocker les noms des fichiers
+        var filenames = '';
+
+        // Parcourez la liste des fichiers et ajoutez les noms à la chaîne
+        for (var i = 0; i < fileList.length; i++) {
+            filenames += fileList[i].name + ', ';
+        }
+
+        // Supprimez la virgule et l'espace finales
+        filenames = filenames.slice(0, -2);
+
+        // Mettez à jour la valeur de l'input newTemplate avec les noms des fichiers
+        $('input[name="newTemplate"]').val(filenames);
+    });
+});
