@@ -59,7 +59,7 @@ class ProjetStructure
         $configArray = json_decode($configContent, true);
 
         // Modifiez la classe Missions pour le profil donné
-        $configArray['Missions'][$profil]['template'] = 'nouvelle_valeur.pbo';
+        $configArray;
 
         // Enregistrez le tableau mis à jour dans le fichier JSON
         file_put_contents($chemin, json_encode($configArray));

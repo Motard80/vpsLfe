@@ -18,13 +18,10 @@ if (file_exists($cheminFichierJSON)) {
     $profil = json_decode($jsonContent, true);
 }
 if(isset($_POST['profil'])){
-   
     $cheminConfig= $pathConfig.  $_POST['profil'] . "/config.cfg";
-var_dump($cheminConfig);
 }
 if(isset($_SESSION['lastProfilesSelect'])){
     $cheminConfig = $pathConfig.$_SESSION['lastProfilesSelect']."/config.cfg";
-    var_dump($cheminConfig);
 }
 $editeurConfig = new EditeurConfigServeur($cheminConfig);
 $hostname = $editeurConfig->getHostname();
@@ -45,7 +42,6 @@ if (isset($_POST['updateConfig'])) {
     // Vérification du profil et téléchargement du fichier
     if (!empty($profil) && !empty($fileHtml['name'])) {
         $uploadedFileName = $fileUploader->uploadFilePbo($filePbo,$profil);
-        var_dump($$uploadedFileName);
         $uploadedFileNameHtml= $fileUploader->uploadFileHtml($fileHtml, $profil);
         if ($uploadedFileName !== false) {
             // Fichier téléchargé avec succès, vous pouvez faire d'autres traitements ici
@@ -105,9 +101,7 @@ if (isset($_POST['updateConfig'])) {
         $serverConfigEditor->setPassword($newPassword);
         //Modification de la variable template de la class mission 
         $serverConfigEditor->setMissionTemplate($newTemplate); // Utilisation de la nouvelle méthode
-        $newLocation = "?p=missions&config=ok";
-                header("Location: $newLocation", true, 301);
-                exit();
+        $succes['tele']='Fichier mise à jours';
 
     }else{
         $formError['technical']='une erreur technique est survenue contacté un Staff Arma3';
