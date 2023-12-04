@@ -97,16 +97,18 @@ if (isset($_POST['updateConfig'])) {
             $jsonContent = file_get_contents($newJson);
             $profilArray = json_decode($jsonContent, true);
         }
-    
-        // Ajouter les informations au tableau JSON
-        $profilArray[$profil] = [
-            'hostname' => $_POST['newHostname'],
-            'template' => $_POST['newTemplate'],
-            // Ajoutez d'autres clés/valeurs selon vos besoins
-        ];
-    
-        // Enregistrez le tableau JSON mis à jour dans le fichier
-        file_put_contents($newJson, json_encode($profilArray, JSON_PRETTY_PRINT));
+     // Ajouter les informations au tableau JSON
+     $profilArray[$profil] = [
+        'hostname' => $_POST['newHostname'],
+        'template' => $_POST['newTemplate'],
+        'pboFile' => $uploadedFileName, // Ajouter le nom du fichier PBO
+        'htmlFile' => $uploadedFileNameHtml, // Ajouter le nom du fichier HTML
+        // Ajoutez d'autres clés/valeurs selon vos besoins
+    ];
+
+    // Enregistrez le tableau JSON mis à jour dans le fichier
+    file_put_contents($newJson, json_encode($profilArray, JSON_PRETTY_PRINT));
+
     
         // Utilisation de la classe EditeurConfigServeur
         $newHostname = "\"" . $hostname . "\"";

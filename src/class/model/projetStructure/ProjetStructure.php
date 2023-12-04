@@ -73,6 +73,7 @@ class ProjetStructure
         }
     }private function inclureEtRenommerProfil($dossierProjet, $nomProjet)
     {
+
         $cheminFichierProfilSource = '../src/view/profil_1/profil.json';
         $cheminFichierProfilDestination = $dossierProjet . '/' . $nomProjet . '.json';
     
