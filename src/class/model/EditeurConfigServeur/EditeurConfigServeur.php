@@ -5,6 +5,9 @@ namespace src\class\model\EditeurConfigServeur;
 class EditeurConfigServeur
 {
     private $configFilePath;
+    protected $Hostname;
+    protected $Password;
+    protected $Template;
 
     public function __construct($cheminFichierConfig)
     {
@@ -15,6 +18,7 @@ class EditeurConfigServeur
     {
         $this->mettreAJourConfig('hostname', $nouveauNomHote);
     }
+    
 
     public function setPassword($nouveauMotDePasse)
     {
@@ -67,5 +71,40 @@ class EditeurConfigServeur
         } else {
             echo "Le fichier de configuration n'existe pas : " . $this->configFilePath;
         }
+    }
+    public function getHostname()
+    {
+        // Lire le contenu actuel du fichier de configuration
+        $contenuConfig = file_get_contents($this->configFilePath);
+
+        // Utiliser une expression régulière pour extraire la valeur de l'hostname
+        preg_match("/hostname\s*=\s*([^;]*)/", $contenuConfig, $matches);
+
+        // Retourner la valeur trouvée ou null si non trouvée
+        return isset($matches[1]) ? trim($matches[1]) : null;
+    }
+
+    public function getPassword()
+    {
+        // Lire le contenu actuel du fichier de configuration
+        $contenuConfig = file_get_contents($this->configFilePath);
+
+        // Utiliser une expression régulière pour extraire la valeur du mot de passe
+        preg_match("/password\s*=\s*([^;]*)/", $contenuConfig, $matches);
+
+        // Retourner la valeur trouvée ou null si non trouvée
+        return isset($matches[1]) ? trim($matches[1]) : null;
+    }
+
+    public function getTemplate()
+    {
+        // Lire le contenu actuel du fichier de configuration
+        $contenuConfig = file_get_contents($this->configFilePath);
+
+        // Utiliser une expression régulière pour extraire la valeur du template
+        preg_match("/template\s*=\s*([^;]*)/", $contenuConfig, $matches);
+
+        // Retourner la valeur trouvée ou null si non trouvée
+        return isset($matches[1]) ? trim($matches[1]) : null;
     }
 }

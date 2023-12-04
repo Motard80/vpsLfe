@@ -22,7 +22,7 @@ $form= new Form();
             </div>
             <div>
                 <form action="" method="post">
-                    <?= $form->inputText('name','name', 'Nom du joueur' ) ?>
+                    <?= $form->inputText('name','name', 'Nom du joueur','' ) ?>
                     <?= $form->submit('Valider','create', 'create') ?>
                 </form>
             </div>

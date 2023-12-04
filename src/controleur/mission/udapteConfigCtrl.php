@@ -17,6 +17,20 @@ if (file_exists($cheminFichierJSON)) {
     $jsonContent = file_get_contents($cheminFichierJSON);
     $profil = json_decode($jsonContent, true);
 }
+if(isset($_POST['profil'])){
+   
+    $cheminConfig= $pathConfig.  $_POST['profil'] . "/config.cfg";
+var_dump($cheminConfig);
+}
+if(isset($_SESSION['lastProfilesSelect'])){
+    $cheminConfig = $pathConfig.$_SESSION['lastProfilesSelect']."/config.cfg";
+    var_dump($cheminConfig);
+}
+$editeurConfig = new EditeurConfigServeur($cheminConfig);
+$hostname = $editeurConfig->getHostname();
+$password = $editeurConfig->getPassword();
+$template = $editeurConfig->getTemplate();
+
 if (isset($_POST['updateConfig'])) {
     if (!empty($_POST['profil'])) {
         $profil = htmlspecialchars($_POST['profil']);
@@ -31,6 +45,7 @@ if (isset($_POST['updateConfig'])) {
     // Vérification du profil et téléchargement du fichier
     if (!empty($profil) && !empty($fileHtml['name'])) {
         $uploadedFileName = $fileUploader->uploadFilePbo($filePbo,$profil);
+        var_dump($$uploadedFileName);
         $uploadedFileNameHtml= $fileUploader->uploadFileHtml($fileHtml, $profil);
         if ($uploadedFileName !== false) {
             // Fichier téléchargé avec succès, vous pouvez faire d'autres traitements ici

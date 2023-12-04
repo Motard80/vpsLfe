@@ -59,12 +59,12 @@ class Form
      * @param $msgLabel string nom passer dans le label 
      * @return string
      */
-    public function inputText($name, $id, $msgLabel)
+    public function inputText($name, $id, $msgLabel, $placeholder)
     {
 
         return $this->surrond(
             '<label for="' . $id . '">' . $msgLabel . ' :  </label>'
-                . '<input type="text" id="' . $id . '" value="' . $this->getValue($name) . '" name="' . $name . '" required>'
+                . '<input type="text" id="' . $id . '" value="' . $this->getValue($name) . '" name="' . $name . '" placeholder="' . $placeholder . '" required>'
         );
     }
 
@@ -82,7 +82,7 @@ class Form
 
         return $this->surrond(
             '<label for="' . $id . '">' . $msgLabel . ': </label>'
-                . '<input type="email" id="' . $id . '" value="' . $this->getValue($name) . '" name="' . $name . '" required> <br/>'
+                . '<input type="email" id="' . $id . '" value="' . $this->getValue($name) . '" name="' . $name . '"  required> <br/>'
                 . '<p class="text-danger" id="Error' . $error . '"><?= isset($formError[' . $error . ']) ? $formError[' . $error . '] : \'\' ?></p>'
         );
     }

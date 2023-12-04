@@ -31,7 +31,7 @@ $form = new Form();
             <div class="row justify-content-center">
                 <div class="profil">
                     <select name="profil" id="profil">
-                    <option value="<?= isset($_SESSION['lastProfilesSelect'] )? $_SESSION['lastProfilesSelect'] : 'Selectionnez un profil' ?>"><?=  isset($_SESSION['lastProfilesSelect'])? 'Dernier profil séléctionnez: '. $_SESSION['lastProfilesSelect'] : 'Selectionnez un profil'  ?></option>';
+                    <option value="<?= isset($_SESSION['lastProfilesSelect'] )? $_SESSION['lastProfilesSelect'] : '' ?>"><?=  isset($_SESSION['lastProfilesSelect'])? 'Dernier profil séléctionnez: '. $_SESSION['lastProfilesSelect'] : 'Selectionnez un profil'  ?></option>';
                         <?php
                         // Générez les options à partir du tableau JSON
                         foreach ($profil as $profils) { ?>

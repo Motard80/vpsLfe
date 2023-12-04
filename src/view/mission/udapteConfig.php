@@ -27,8 +27,8 @@ $form = new Form();
                 <div class="row justify-content-start">
                     <div>
                         <select name="profil" id="profil">
-                        <option value="<?= isset($_SESSION['lastProfilesSelect'] )? $_SESSION['lastProfilesSelect'] : 'Selectionnez un profil' ?>"><?=  isset($_SESSION['lastProfilesSelect'])? 'Dernier profil séléctionnez: '. $_SESSION['lastProfilesSelect'] : 'Selectionnez un profil'  ?></option>';
-                      <?php                            
+                            <option value="<?= isset($_SESSION['lastProfilesSelect']) ? $_SESSION['lastProfilesSelect'] : 'Selectionnez un profil' ?>"><?= isset($_SESSION['lastProfilesSelect']) ? 'Dernier profil séléctionnez: ' . $_SESSION['lastProfilesSelect'] : 'Selectionnez un profil'  ?></option>';
+                            <?php
                             // Générez les options à partir du tableau JSON
                             foreach ($profil as $profils) { ?>
                                 <option value="<?= $profils ?>"><?= $profils ?></option>
@@ -58,15 +58,15 @@ $form = new Form();
                 </div>
                 <p class="text-danger" id="ErrorProfil"><?= isset($formError['profil']) ? $img . $formError['profil'] . $img : '' ?></p>
                 <div>
-                    <?= $form->inputText('newHostname', 'newHostname', 'Nom de la mission ') ?>
+                    <?= $form->inputText('newHostname', 'newHostname', 'Nom de la mission ', $hostname) ?>
                     <p class="text-danger" id="ErrorNewHostname"><?= isset($formError['newHostname']) ? $img . $formError['newHostname'] . $img : '' ?></p>
                 </div>
                 <div>
-                    <?= $form->inputText('newPassword', 'newPassword', 'Mot de passe pour votre mission ') ?>
+                    <?= $form->inputText('newPassword', 'newPassword', 'Mot de passe pour votre mission ', $password) ?>
                     <p class="text-danger" id="ErrorNewPassword"><?= isset($formError['newPassword']) ? $img . $formError['newPassword'] . $img : '' ?></p>
                 </div>
                 <div>
-                    <?= $form->inputText('newTemplate', 'newTemplate', 'Nom de votre fichier PBO sans l\'extenction .pbo') ?>
+                    <?= $form->inputText('newTemplate', 'newTemplate', 'Nom de votre fichier PBO sans l\'extenction .pbo', $template) ?>
                     <p class="text-danger" id="ErrorNewTemplate"><?= isset($formError['newTemplate']) ? $img . $formError['newTemplate'] . $img : '' ?></p>
                 </div>
                 <div>
