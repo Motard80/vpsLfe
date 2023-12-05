@@ -94,6 +94,7 @@ if (isset($_POST['updateConfig'])) {
             $profilArray = [];
         } else {
             // Charger le tableau JSON existant
+            
             $jsonContent = file_get_contents($newJson);
             $profilArray = json_decode($jsonContent, true);
         }
@@ -107,21 +108,21 @@ if (isset($_POST['updateConfig'])) {
     ];
 // Essayer de changer les permissions du répertoire et des fichiers
 if (chmod($pathConfig, 0755)) {
-    echo "Permissions changées avec succès pour le répertoire $pathConfig";
+    $succes['tele'] ="Permissions changées avec succès pour le répertoire $pathConfig";
 } else {
     echo "Échec du changement des permissions pour le répertoire $pathConfig";
 }
 
 if (chmod($cheminFichierJSON, 0644)) {
-    echo "Permissions changées avec succès pour le fichier $cheminFichierJSON";
+    $succes['tele']= "Permissions changées avec succès pour le fichier $cheminFichierJSON";
 } else {
-    echo "Échec du changement des permissions pour le fichier $cheminFichierJSON";
+    $formError['tele']= "Échec du changement des permissions pour le fichier $cheminFichierJSON";
 }
 
 if (chmod($newJson, 0644)) {
-    echo "Permissions changées avec succès pour le fichier $newJson";
+    $succes['tele']= "Permissions changées avec succès pour le fichier $newJson";
 } else {
-    echo "Échec du changement des permissions pour le fichier $newJson";}
+    $formError['tele']="Échec du changement des permissions pour le fichier $newJson";}
   // Ajouter les informations au tableau JSON
   $profilArray[$profil] = [
     'hostname' => $_POST['newHostname'],
@@ -133,9 +134,9 @@ if (chmod($newJson, 0644)) {
 
 // Enregistrez le tableau JSON mis à jour dans le fichier
 if (file_put_contents($newJson, json_encode($profilArray, JSON_PRETTY_PRINT))) {
-    echo "Fichier JSON mis à jour avec succès.";
+    $succes['tele']= "Fichier JSON mis à jour avec succès.";
 } else {
-    echo "Échec de la mise à jour du fichier JSON : " . error_get_last()['message'];
+    $formError['tele']= "Échec de la mise à jour du fichier JSON : " . error_get_last()['message'];
 }
     // Enregistrez le tableau JSON mis à jour dans le fichier
     file_put_contents($newJson, json_encode($profilArray, JSON_PRETTY_PRINT));
