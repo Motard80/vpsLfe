@@ -94,7 +94,6 @@ if (isset($_POST['updateConfig'])) {
             $profilArray = [];
         } else {
             // Charger le tableau JSON existant
-            
             $jsonContent = file_get_contents($newJson);
             $profilArray = json_decode($jsonContent, true);
         }
